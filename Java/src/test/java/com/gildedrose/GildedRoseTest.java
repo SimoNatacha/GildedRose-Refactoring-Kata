@@ -2,21 +2,21 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
     @Test
-    public void testUpdateAddQuality() {
+    public void testUpdateAddQuality() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Item[] items = new Item[]{
-            new Item("Aged Brie", 5, 10),
-            new Item("Backstage passes to a TAFKAL80ETC concert", 10, 10),
-            new Item("Sulfuras, Hand of Ragnaros", 0, 80),
-            new Item("Conjured Mana Cake", 5, 10),
-            new Item("Sulfuras, Hand of Ragnaros", -1, 80),
-            new Item("Backstage passes to a TAFKAL80ETC concert", -10, 10),
-            new Item("Elixir of the Mongoose", 5, 7),
-
-
+            new AgedBrie("Aged Brie", 5, 10),
+            new BackStage("Backstage passes to a TAFKAL80ETC concert", 10, 10),
+            new Sulfuras("Sulfuras, Hand of Ragnaros", 0),
+            new Conjured("Conjured Mana Cake", 5, 10),
+            new Sulfuras("Sulfuras, Hand of Ragnaros", -1),
+            new BackStage("Backstage passes to a TAFKAL80ETC concert", -10, 10),
+            new NormalItem("Elixir of the Mongoose", 5, 7),
         };
 
         GildedRose gildedRose = new GildedRose(items);
@@ -33,11 +33,11 @@ class GildedRoseTest {
     }
 
     @Test
-    public void testUpdateSubtractionQuality() {
+    public void testUpdateSubtractionQuality() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         Item[] items = new Item[]{
-            new Item("Aged Brie", -1, 19),
-            new Item("Conjured Mana Cake", -5, 9),
-            new Item("Elixir of the Mongoose", -5, 2),
+            new AgedBrie("Aged Brie", -1, 19),
+            new Conjured("Conjured Mana Cake", -5, 9),
+            new NormalItem("Elixir of the Mongoose", -5, 2),
         };
 
         GildedRose gildedRose = new GildedRose(items);
